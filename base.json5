@@ -28,7 +28,6 @@
     separateMajorMinor: true,
     separateMinorPatch: true,
     "packageRules": [
-        // least specific rules at the top, as renovate does not stop after teh first match and more specific matches at the bottom override previous matches
         // major/minor/patch separate for all packages. Override in specific block below, if undesired
         {
             "matchPackagePatterns": [
@@ -40,8 +39,14 @@
                 "patch"
             ],
             separateMajorMinor: true,
-            separateMinorPatch: true,
-            "groupName": "dependencies"
+            separateMinorPatch: true
+        },
+        // least specific rules at the top, as renovate does not stop after teh first match and more specific matches at the bottom override previous matches
+        {
+            "matchPackagePatterns": [
+                "*"
+            ],
+            "groupName": "Dependencies"
         },
         // separate group for npm "react" packages
         {
@@ -54,7 +59,7 @@
                 "@types/react",
                 "@types/react-dom"
             ],
-            "groupName": "react"
+            "groupName": "React packages"
         },
         // separate group for npm "react-admin" packages
         {
@@ -64,7 +69,7 @@
             "matchPackageNames": [
                 "react-admin"
             ],
-            "groupName": "react-admin"
+            "groupName": "React-Admin packages"
         },
         // separate group for npm "next" packages
         {
@@ -74,7 +79,7 @@
             "matchPackageNames": [
                 "next"
             ],
-            "groupName": "next"
+            "groupName": "Next.js packages"
         },
         // separate group for npm "node" packages
         {
@@ -85,7 +90,7 @@
                 "node",
                 "@types/node"
             ],
-            "groupName": "node"
+            "groupName": "Node packages"
         },
         // separate group for npm "yarn" packages
         {
@@ -95,7 +100,7 @@
             "matchPackageNames": [
                 "yarn"
             ],
-            "groupName": "yarn"
+            "groupName": "Yarn packages"
         },
         // separate group for npm "pnpm" packages
         {
@@ -105,7 +110,7 @@
             "matchPackageNames": [
                 "pnpm",
             ],
-            "groupName": "pnpm"
+            "groupName": "Pnpm packages"
         },
         // separate group for npm "typescript" packages
         {
@@ -115,7 +120,7 @@
             "matchPackageNames": [
                 "typescript"
             ],
-            "groupName": "typescript"
+            "groupName": "Typescript packages"
         },
         // separate group for npm "materialui" packages
         {
@@ -125,7 +130,7 @@
             "matchPackagePrefixes": [
                 "@mui"
             ],
-            "groupName": "mui"
+            "groupName": "Material UI packages"
         },
     ],
     "schedule": [
