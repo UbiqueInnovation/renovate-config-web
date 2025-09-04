@@ -15,9 +15,7 @@
         {
             "matchHost": "artifactory.ubique.ch/",
             "userName": "mend-renovate",
-            "encrypted": {
-                "token": "{{ secrets.UBIQUE_GITHUB_COM_TOKEN }}"
-            }
+            "token": "{{ secrets.UBIQUE_GITHUB_COM_TOKEN }}"
         }
     ],
     matchUpdateTypes: [
