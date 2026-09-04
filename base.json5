@@ -26,6 +26,13 @@
         ]
     },
     "packageRules": [
+        // load npm packages from ubique artifactory
+        {
+            "matchDatasources": ["npm"],
+            "registryUrls": [
+                "https://artifactory.ubique.ch/artifactory/api/npm/npm/"
+            ]
+        },
         // separate group for npm "react" packages
         {
             "matchManagers": [
