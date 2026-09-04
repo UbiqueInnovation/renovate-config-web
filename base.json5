@@ -1,17 +1,30 @@
 {
     "$schema": "https://docs.renovatebot.com/renovate-schema.json",
     "extends": [
-        'github>UbiqueInnovation/renovate-config-systems:base.json5',
+        "github>UbiqueInnovation/renovate-config-systems:base.json5"
     ],
     "enabledManagers": [
+        "ansible",
         "docker-compose",
         "dockerfile",
         "kubernetes",
         "github-actions",
         "npm",
         "pip_requirements",
-        "poetry"
+        "pep621",
+        "custom.regex",
+        "pre-commit"
     ],
+    // pre-commit is currently still in beta testing
+    "pre-commit": {
+        "enabled": true
+    },
+    "kubernetes": {
+        "managerFilePatterns": [
+            "/(^|/)(deployment|ingress|service)\\.ya?ml$/",
+            "/(^|/)(k8s|manifests)/.+\\.ya?ml$/"
+        ]
+    },
     "packageRules": [
         // separate group for npm "react" packages
         {
@@ -97,9 +110,12 @@
             ],
             "groupName": "Material UI packages"
         },
-    ],
-    "schedule": [
-        "before 3am on the first day of the month"
+        {
+            "matchManagers": [
+                "pep621"
+            ],
+            "rangeStrategy": "update-lockfile"
+        }
     ],
     "reviewers": [
         "team:web"
