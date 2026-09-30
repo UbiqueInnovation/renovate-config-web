@@ -25,14 +25,8 @@
             "/(^|/)(k8s|manifests)/.+\\.ya?ml$/"
         ]
     },
+    "npmrc": "registry=https://artifactory.ubique.ch/artifactory/api/npm/npm/",
     "packageRules": [
-        // load npm packages from ubique artifactory
-        {
-            "matchDatasources": ["npm"],
-            "registryUrls": [
-                "https://artifactory.ubique.ch/artifactory/api/npm/npm/"
-            ]
-        },
         // separate group for npm "react" packages
         {
             "matchManagers": [
@@ -93,7 +87,7 @@
                 "npm"
             ],
             "matchPackageNames": [
-                "pnpm",
+                "pnpm"
             ],
             "groupName": "Pnpm packages"
         },
@@ -112,8 +106,8 @@
             "matchManagers": [
                 "npm"
             ],
-            "matchPackagePrefixes": [
-                "@mui"
+            "matchPackageNames": [
+                "@mui/**"
             ],
             "groupName": "Material UI packages"
         },
